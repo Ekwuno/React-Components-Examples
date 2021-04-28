@@ -8,3 +8,16 @@ jobs:
       - uses: actions/setup-node@v1
       - run: npm install -g bats
       - run: bats -v
+  
+  weekday_jobs:
+    runs-on: ubuntu-latest
+    env:
+      DAY_OF_WEEK: Mon
+    steps: 
+    - name: "Hello it's monday"
+      if: ${{env.DAY_OF_WEEK == 'Mon' }}
+      run: echo "Hello $FIRST_NAME $middle_name $Last_Name, today is Monday!"
+      env:
+          FIRST_NAME: Mona
+          middle_name: The
+          Last_Name: Octocat
